@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | RONAH</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+  <!--navbar -->
+  <div class="navbar">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="#" onclick="showUploadPopup()">Upload</a>
+    <a href="#" onclick="showGeneratePopup()">Generate Outfit</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!--Hero img-->
+  <div class="hero" style="background: url('https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center center/cover no-repeat;">
+    <div>Wardrobe AI</div>
+  </div>
+
+<!--Collection-->
+<div class="container">
+  <div class="section">
+    <div class="section-title">Your Collection</div>
+    <div class="image-grid">
+
+      {% for cat in ['bottom', 'dress', 'outwear', 'shoes', 'top'] %}
+        <a href="{{ url_for('view_category', cat=cat) }}" class="category-card">
+          <img 
+            src="{{ url_for('static', filename='images/categories/' ~ cat ~ '.jpg') }}" 
+            alt="{{ cat }}" 
+            class="category-img"
+          >
+          <div class="caption">{{ cat.title() }} ({{ uploads.get(cat, [])|length }})</div>
+        </a>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+  <div id="dim-bg" class="dim-background" onclick="hidePopups()"></div>
+
+  <!--Upload clothes-->
+  <div id="upload-popup" class="upload-popup">
+    <h4>Upload New Clothing</h4>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Upload and Categorize</button>
+    </form>
+  </div>
+
+  <!--Pop up generation-->>
+  <div id="generate-popup" class="generate-popup">
+    <h4>Select Outfit Type</h4>
+    <form action="{{ url_for('generate_outfit') }}" method="get">
+      <button type="submit" name="pieces" value="2">2-Piece (Dress + Shoes)</button><br><br>
+      <button type="submit" name="pieces" value="3">3-Piece (Top/Outwear, Bottom, Shoes)</button><br><br>
+      <button type="submit" name="pieces" value="4">4-Piece (Top, Bottom, Outwear, Shoes)</button>
+    </form>
+  </div>
+
+</body>
+</html>
