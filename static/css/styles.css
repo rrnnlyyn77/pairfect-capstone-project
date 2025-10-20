@@ -45,14 +45,18 @@
 
 
 .maincontainer{
-    width: 1440px;
-    height: 1024px;
+    width: 100%;
     background: #FAFAFA;
+    overflow: hidden;
 }
 
 .imgcontainer{
-    width: 600px;
-    height: 1024px;
+    width: 30%;
+    height: auto;
     flex-shrink: 0;
     background: #FFA689;
+}
+
+.textcontainer{
+
 }
