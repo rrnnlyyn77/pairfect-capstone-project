@@ -1,0 +1,10 @@
+Flask
+paddleocr
+paddlepaddle
+easyocr
+opencv-python
+numpy
+pandas
+Pillow
+scikit-learn
+tqdm
