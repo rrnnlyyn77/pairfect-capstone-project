@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/options" class="back-link">&lt; Go To Previous</a>
+
+<div class="manual-header">
+    <h2>MANUAL ACTIVE INGREDIENT ENTRY</h2>
+    <p class="manual-sub">
+        It is important to understand how the ingredients formulated in the products we use harmonize with each other.
+        <br>Select the product type and active ingredient below then click "Get Results" once finished.
+    </p>
+</div>
+
+<form method="POST" action="/manual">
+
+    <div class="manual-grid">
+
+        {% for i in range(1, 11) %}
+        <div class="manual-product-block">
+
+            <label class="manual-label">PRODUCT {{ i }}:</label>
+
+            <!-- PRODUCT TYPE DROPDOWN -->
+            <select name="product_type_{{ i }}" class="manual-select type-select">
+                <option disabled>Select Product Type</option>
+
+                <option value="Serum" {% if saved[i-1].get("type") == "Serum" %}selected{% endif %}>Serum</option>
+                <option value="Cleanser" {% if saved[i-1].get("type") == "Cleanser" %}selected{% endif %}>Cleanser</option>
+                <option value="Toner" {% if saved[i-1].get("type") == "Toner" %}selected{% endif %}>Toner</option>
+                <option value="Moisturizer" {% if saved[i-1].get("type") == "Moisturizer" %}selected{% endif %}>Moisturizer</option>
+                <option value="Sunscreen" {% if saved[i-1].get("type") == "Sunscreen" %}selected{% endif %}>Sunscreen</option>
+                <option value="Exfoliant" {% if saved[i-1].get("type") == "Exfoliant" %}selected{% endif %}>Exfoliant</option>
+                <option value="Other" {% if saved[i-1].get("type") == "Other" %}selected{% endif %}>Other</option>
+            </select>
+
+            <!-- ACTIVE INGREDIENT DROPDOWN -->
+            <select name="ingredient_{{ i }}" class="manual-select ingredient-select">
+
+                {% if saved[i-1].get("ingredient") %}
+                    <option selected value="{{ saved[i-1].ingredient }}">{{ saved[i-1].ingredient }}</option>
+                {% else %}
+                    <option disabled selected>Select Active Ingredient</option>
+                {% endif %}
+
+                {% for ing in ingredients %}
+                    <option value="{{ ing }}">{{ ing }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- UPLOAD IMAGE BUTTON -->
+            <a href="/upload_image?product={{ i }}" class="upload-image-btn">
+                OR upload image instead
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="manual-btn-wrap">
+        <button class="manual-btn" type="submit">Get Results</button>
+    </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/manual" class="back-link">&lt; Go Back</a>
+
+<div class="results-header">
+    <h2>YOUR INGREDIENT ANALYSIS</h2>
+    <p>Here’s a quick look at how your active ingredients work together.</p>
+</div>
+
+<!-- SCORE BUBBLE -->
+<div class="results-score">
+    <div class="score-circle">
+        <span class="score-number">{{ score }}%</span>
+        <span class="score-label">Compatibility</span>
+    </div>
+</div>
+
+<!-- EXPLANATION TEXT -->
+<div style="text-align:center; margin-bottom:40px; font-size:14px; color:#6B5A4E;">
+    {{ explanation }}
+</div>
+
+<!-- WRAPPER -->
+<div class="results-wrapper">
+
+    <!-- GOOD MIXES -->
+    <div class="results-section good-section">
+        <h3>GOOD MIXES</h3>
+        <p class="section-sub">These combinations are safe and work well together.</p>
+
+        {% if good %}
+        <div class="result-card-grid">
+            {% for a, b in good %}
+            <div class="result-card">
+                <h4>{{ a }} + {{ b }}</h4>
+                <p>This combination works well together.</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="color:#777; margin-top:10px;">No good combinations were detected.</p>
+        {% endif %}
+    </div>
+
+    <!-- BAD MIXES -->
+    <div class="results-section bad-section">
+        <h3>AVOID MIXING</h3>
+        <p class="section-sub">These combinations may irritate or weaken the skin barrier.</p>
+
+        {% if bad %}
+        <div class="result-card-grid">
+            {% for a, b in bad %}
+            <div class="result-card bad">
+                <h4>{{ a }} + {{ b }}</h4>
+                <p>This combination may cause irritation or reduced effectiveness.</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p style="color:#777; margin-top:10px;">No risky combinations found.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- BUTTONS -->
+<div class="results-btn-row">
+    <a href="/manual" class="results-btn secondary">Edit Inputs</a>
+    <a href="/options" class="results-btn primary">Start Over</a>
+</div>
+
+{% endblock %}

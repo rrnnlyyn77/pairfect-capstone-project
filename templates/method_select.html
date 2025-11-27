@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="method-container">
+
+    <a href="/options" class="back-link">&lt; Go To Previous</a>
+
+    <h2 class="method-title">CHOOSE YOUR PREFERRED METHOD</h2>
+    <p class="method-sub">
+        Select from any of the options below:
+    </p>
+
+<div class="method-grid">
+
+    <div class="method-item">
+        <a href="/manual" class="method-card">
+            <img src="/static/images/method_manual.jpg" class="method-img">
+            <div class="method-label">MANUAL ENTRY</div>
+        </a>
+        <p class="method-desc">
+            Select manual entry if you already know your product’s active ingredient.
+        </p>
+    </div>
+
+    <div class="method-item">
+        <a href="/upload_image" class="method-card">
+            <img src="/static/images/method_upload.jpg" class="method-img">
+            <div class="method-label">IMAGE UPLOAD</div>
+        </a>
+        <p class="method-desc">
+            Select image upload if you want to upload your product’s ingredient label.
+        </p>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

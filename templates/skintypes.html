@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="skin-header">
+    <a href="/options" class="back-link">&lt; Go To Previous</a>
+    <h2>IDENTIFY YOUR SKIN TYPE AND ITS NEEDS</h2>
+    <p>What type of skin do you have?</p>
+</div>
+
+<div class="skin-carousel">
+    <div class="arrow-left">&#10094;</div>
+
+    <div class="skin-cards-wrapper">
+
+        <!-- OILY -->
+        <div class="skin-detailed-card">
+            <img src="/static/images/oily.jpg" class="skin-detail-img">
+            <h3>SKIN TYPE: OILY</h3>
+            <div class="dos-donts">
+                <div class="dos">
+                    <h4>DOs</h4>
+                    <ul>
+                        <li>Use lightweight, oil-free moisturizers</li>
+                        <li>Choose salicylic acid for unclogging pores</li>
+                        <li>Use non-comedogenic products</li>
+                    </ul>
+                </div>
+                <div class="donts">
+                    <h4>DON'Ts</h4>
+                    <ul>
+                        <li>Avoid heavy or greasy products</li>
+                        <li>No over-exfoliating (causes more oil)</li>
+                        <li>Avoid pore-clogging makeup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- DRY -->
+        <div class="skin-detailed-card">
+            <img src="/static/images/dry.jpg" class="skin-detail-img">
+            <h3>SKIN TYPE: DRY</h3>
+            <div class="dos-donts">
+                <div class="dos">
+                    <h4>DOs</h4>
+                    <ul>
+                        <li>Use thick, hydrating moisturizers</li>
+                        <li>Include hyaluronic acid and ceramides</li>
+                        <li>Use gentle, non-foaming cleansers</li>
+                    </ul>
+                </div>
+                <div class="donts">
+                    <h4>DON'Ts</h4>
+                    <ul>
+                        <li>Avoid stripping cleansers</li>
+                        <li>No harsh exfoliants</li>
+                        <li>Avoid alcohol-based toners</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- NORMAL -->
+        <div class="skin-detailed-card">
+            <img src="/static/images/normal.jpg" class="skin-detail-img">
+            <h3>SKIN TYPE: NORMAL</h3>
+            <div class="dos-donts">
+                <div class="dos">
+                    <h4>DOs</h4>
+                    <ul>
+                        <li>Maintain a balanced routine</li>
+                        <li>Use SPF daily</li>
+                        <li>Hydrate consistently</li>
+                    </ul>
+                </div>
+                <div class="donts">
+                    <h4>DON'Ts</h4>
+                    <ul>
+                        <li>Don't skip moisturizer</li>
+                        <li>Avoid overusing strong actives</li>
+                        <li>Don't overwash the skin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SENSITIVE -->
+        <div class="skin-detailed-card">
+            <img src="/static/images/sensitive.jpg" class="skin-detail-img">
+            <h3>SKIN TYPE: SENSITIVE</h3>
+            <div class="dos-donts">
+                <div class="dos">
+                    <h4>DOs</h4>
+                    <ul>
+                        <li>Use fragrance-free, gentle products</li>
+                        <li>Patch-test new skincare items</li>
+                        <li>Look for soothing ingredients like aloe or centella</li>
+                    </ul>
+                </div>
+                <div class="donts">
+                    <h4>DON'Ts</h4>
+                    <ul>
+                        <li>Avoid strong actives (retinol, high % acids)</li>
+                        <li>No physical scrubs</li>
+                        <li>Avoid alcohol-heavy formulas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="arrow-right">&#10095;</div>
+</div>
+
+<!-- CAROUSEL DOTS -->
+<div class="carousel-dots">
+    <div class="carousel-dot active"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+    <div class="carousel-dot"></div>
+</div>
+{% endblock %}

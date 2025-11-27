@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAIRFECT</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    {% if not hide_navbar %}
+    <nav class="navbar">
+        <div class="nav-left">PAIRFECT</div>
+        <div class="nav-right">
+            <a class="nav-link" href="/about">About Us</a>
+            <a class="nav-link" href="/">Go To Home</a>
+        </div>
+    </nav>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">PAIRFECT</div>
+        <div class="footer-tagline">your companion for a “pairfect” skincare routine</div>
+        <div class="footer-year">Est. 2025</div>
+    </footer>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="/method" class="back-link">&lt; Go To Previous</a>
+
+<div class="upload-header">
+    <h2>IMAGE INGREDIENT LABEL UPLOAD</h2>
+    <p>Upload your product’s ingredient label for analysis.<br>
+    * Accepted image formats: jpg and jpeg </p>
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="upload-flex">
+
+        <div class="upload-box" id="dropArea" onclick="triggerInput()">
+            <p class="upload-text">Drag & Drop Image Here<br>or Click to Select</p>
+            <input type="file" id="imageInput" name="image" accept="image/*" hidden onchange="previewImage(event)">
+        </div>
+
+        <img id="preview" class="upload-preview-side" style="display:none;" />
+
+    </div>
+
+    <div class="upload-btn-wrap">
+        <button class="upload-btn" type="submit">Submit Image</button>
+    </div>
+
+</form>
+
+{% if detected %}
+<div style="text-align:center; margin-top:30px;">
+    <h3 style="color:#6B5A4E;">Detected Active Ingredient:</h3>
+    <p style="font-size:18px; font-weight:600; color:#3d3d3d;">{{ detected }}</p>
+
+    <a href="/manual?product={{ product_num }}&ingredient={{ detected }}"
+       class="results-btn primary"
+       style="margin-top:20px; display:inline-block; padding:12px 28px;">
+        Next
+    </a>
+</div>
+{% endif %}
+
+
+{% endblock %}
