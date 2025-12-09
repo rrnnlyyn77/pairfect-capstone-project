@@ -1,6 +1,4 @@
 Flask
-paddleocr
-paddlepaddle==2.5.2
 easyocr
 opencv-python-headless
 numpy
@@ -9,4 +7,6 @@ Pillow
 scikit-learn
 tqdm
 gunicorn
+torch==2.0.1
+
 
