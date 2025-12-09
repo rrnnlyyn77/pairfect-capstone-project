@@ -7,6 +7,6 @@ Pillow
 scikit-learn
 tqdm
 gunicorn
-torch==2.0.1
+
 
 
