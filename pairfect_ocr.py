@@ -4,7 +4,7 @@ import re
 import easyocr
 
 
-easy = easyocr.Reader(['en'], gpu=False)
+easy = easyocr.Reader(['en'], gpu=False, verbose=False)
 
 INGREDIENTS = [
     "niacinamide", "hyaluronic acid", "salicylic acid", "glycolic acid",
