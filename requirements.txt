@@ -8,4 +8,5 @@ pandas
 Pillow
 scikit-learn
 tqdm
+gunicorn
 
