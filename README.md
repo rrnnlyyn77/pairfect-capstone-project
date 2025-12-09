@@ -2,6 +2,13 @@
 # About this Project
 Pairfect is an online application that helps people make safer and smarter skincare decisions. The project will examine the compatibility of active ingredients versus using multiple products together, as most existing apps and tools do not consider compatibility when products are used together in their functionality. 
 
+This lightweight web application can be utilized by users to determine the compatibility of the active ingredients within their current skincare products. This compatibility evaluation will be done using a research-based table for evaluating ingredient combinations and will provide a user-friendly output, including an overall Synergy Score and rationale.
+
+The application supports:
+- Manual ingredient entry (fully functional on deployment)
+- OCR ingredient extraction (functional only in local environments)
+Due to hosting limitations, OCR is disabled on deployed versions, but works when running the app locally.
+
 # Features
 1. Ingredient Synergy Analysis
 - Performs pairwise compatibility checks between all selected active ingredients.
