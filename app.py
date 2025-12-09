@@ -194,7 +194,6 @@ def manual_entry():
 
     auto_ingredients = {}
 
-    # When redirected from upload
     product_num = request.args.get("product")
     ingredient = request.args.get("ingredient")
 
@@ -204,7 +203,6 @@ def manual_entry():
         saved[product_num-1]["ingredient"] = ingredient
         session["manual_data"] = saved
 
-    # When user submits the form normally
     if request.method == "POST":
         manual_data = []
         for i in range(1, 11):
