@@ -7,7 +7,7 @@ This lightweight web application can be utilized by users to determine the compa
 The application supports:
 - Manual ingredient entry (fully functional on deployment)
 - OCR ingredient extraction (functional only in local environments)
-Due to hosting limitations, OCR is disabled on deployed versions, but works when running the app locally.
+<br> Due to hosting limitations, OCR is disabled on deployed versions, but works when running the app locally.
 
 # Features
 1. Ingredient Synergy Analysis
