@@ -125,10 +125,8 @@ def normalize(name):
     }
     return aliases.get(name, name)
 
-UPLOAD_FOLDER = "static/uploads"
-
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+UPLOAD_FOLDER = "/tmp/uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 #Landing page
 @app.route('/')
