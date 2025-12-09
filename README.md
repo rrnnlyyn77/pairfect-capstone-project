@@ -140,4 +140,4 @@ Yoobee Colleges <br>
 
 # External Links
 - Repository link: https://github.com/rrnnlyyn77/pairfect-capstone-project
-- Deployed version _( via Render)_: https://pairfect-application-ii.onrender.com
+- Deployment link _( via Render)_: https://pairfect-application-ii.onrender.com
