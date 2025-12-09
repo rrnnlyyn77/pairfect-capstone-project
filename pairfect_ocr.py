@@ -1,27 +1,22 @@
-# pairfect_ocr.py
 import cv2
 import numpy as np
 import re
 import easyocr
 
 
-# Initialize OCR Reader
 easy = easyocr.Reader(['en'], gpu=False)
 
-# List of recognized ingredients
 INGREDIENTS = [
     "niacinamide", "hyaluronic acid", "salicylic acid", "glycolic acid",
     "lactic acid", "azelaic acid", "kojic acid", "ascorbic acid",
     "retinol", "ceramides", "spf", "vitamin c"
 ]
 
-# Optional normalization map
 NORMALIZE_MAP = {
     "vitamin c": "ascorbic acid",
     "vit c": "ascorbic acid",
     "ascorbicacid": "ascorbic acid",
 
-    # NEW — ceramide variants
     "ceramide": "ceramides",
     "ceramidenp": "ceramides",
     "ceramideap": "ceramides",
@@ -43,7 +38,6 @@ def preprocess_image(image_path):
         41, 7
     )
 
-    # Sharpening kernel
     kernel = np.array([
         [0, -0.5, 0],
         [-0.5, 3, -0.5],
@@ -60,7 +54,6 @@ def extract_text(processed_image):
     result = easy.readtext(processed_image, detail=0)
     text = " ".join(result)
 
-    # clean formatting
     text = text.replace(" ", "")
     text = re.sub(r"([a-z])([A-Z])", r"\1 \2", text)
 
@@ -70,17 +63,15 @@ def extract_text(processed_image):
 def find_ingredients(text):
     found = []
 
-    # normalize map-based detections
     for raw, norm in NORMALIZE_MAP.items():
         if raw in text:
             found.append((norm, text.index(raw)))
 
-    # detect the main ingredient list
     for ing in INGREDIENTS:
-        # allow singular ceramide and plural ceramides
+
         if ing == "ceramides":
             patterns = [
-                r"\bceramides?\b",    # matches ceramide or ceramides
+                r"\bceramides?\b",   
                 r"ceramidenp", r"ceramideap", r"ceramideeop"
             ]
         else:
@@ -91,10 +82,8 @@ def find_ingredients(text):
             if match:
                 found.append((ing, match.start()))
 
-    # sort based on appearance in text
     found.sort(key=lambda x: x[1])
 
-    # return deduplicated ingredient names
     cleaned = []
     for ing, _ in found:
         if ing not in cleaned:
