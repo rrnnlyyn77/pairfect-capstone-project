@@ -20,7 +20,6 @@
 
             <label class="manual-label">PRODUCT {{ i }}:</label>
 
-            <!-- PRODUCT TYPE DROPDOWN -->
             <select name="product_type_{{ i }}" class="manual-select type-select">
                 <option disabled>Select Product Type</option>
 
@@ -33,7 +32,6 @@
                 <option value="Other" {% if saved[i-1].get("type") == "Other" %}selected{% endif %}>Other</option>
             </select>
 
-            <!-- ACTIVE INGREDIENT DROPDOWN -->
             <select name="ingredient_{{ i }}" class="manual-select ingredient-select">
 
                 {% if saved[i-1].get("ingredient") %}
@@ -47,7 +45,6 @@
                 {% endfor %}
             </select>
 
-            <!-- UPLOAD IMAGE BUTTON -->
             <a href="/upload_image?product={{ i }}" class="upload-image-btn">
                 OR upload image instead
             </a>
